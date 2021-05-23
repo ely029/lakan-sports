@@ -20,7 +20,16 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'team_coach',
+        'photo_url',
+        'team_coach',
+        'team_name',
+        'team_description',
+        'country',
+        'country_flag_url',
     ];
+
+    public $table = 'user';
 
     /**
      * The attributes that should be hidden for arrays.
@@ -40,4 +49,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function teamSchedules()
+    {
+        return $this->belongsToMany('App\Model\TeamSchedule');
+    }
 }
